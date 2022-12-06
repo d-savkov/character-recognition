@@ -1,0 +1,202 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Recognition */
+.recognition-container {
+    background-color: white;
+    padding: 2% 4%;
+}
+
+.recognition-image-container {
+    margin: 10px;
+    filter: drop-shadow(5px 5px 10px #272a27);
+}
+
+.recognition-image-container img {
+    width: auto;
+    height: 320px;
+    object-fit: cover;
+}
+
+.recognition-button-bar button {
+    margin: 5px;
+}
+
+.recognition-button-bar button label {
+    padding: 0 5px 0 0;
+}
+
+/* Wiki cards */
+.wiki-container {
+    background-color: white;
+    padding: 2% 4%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(230px, 1fr));
+    grid-gap: 20px;
+}
+
+.card {
+    display: grid;
+    padding: 2% 2% 0;
+    color: black;
+}
+
+.card-name {
+    font: 27px "Georgia";
+    font-weight: 500;
+}
+
+.card-played-by {
+    font: 14px "Georgia";
+    font-weight: 150;
+}
+
+.card-img {
+    float: top;
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5%;
+    margin-bottom: 5%;
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+/* Wiki single */
+.wiki-single-text {
+    padding: 0 25%;
+    text-align: center;
+}
+
+.wiki-single-image-container {
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wiki-single-image {
+    float: top;
+    width: 55%;
+    height: 95%;
+    object-fit: cover;
+    object-position: 10% 30%;
+    backdrop-filter: blur(5px);
+    filter: drop-shadow(5px 5px 10px #272a27);
+}
+
+.wiki-single-image-background {
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 80%;
+    object-fit: cover;
+    filter: blur(5px);
+    position: absolute;
+    margin: -5px -10px;
+}
+
+.wiki-single-name {
+    font: 45px "Georgia";
+    font-weight: 600;
+}
+
+.wiki-single-played-by {
+    font: 18px "Georgia";
+}
+
+.wiki-single-description {
+    text-align: justify;
+    font: 20px "Georgia";
+}
+
+/* Image input */
+.image-input .form-group {
+    padding: 1em;
+    margin: 1em
+}
+
+.image-input input[type=file] {
+    outline: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none
+}
+
+.image-input .label {
+    border: 2px dashed grey;
+    border-radius: 5px;
+    display: block;
+    padding: 1.2em;
+    transition: border 300ms ease;
+    cursor: pointer;
+}
+
+.image-input .label i {
+    display: block;
+    font-size: 42px;
+    padding-bottom: 16px
+}
+
+.image-input .label i, .image-input .label .title {
+    color: grey;
+    display: block;
+}
+
+.image-input .label:hover {
+    border: 2px solid #000
+}
+
+.image-input .label:hover i, .image-input .label:hover .title {
+    color: #000
+}
+
+/* Header */
+.header {
+    overflow: hidden;
+    background-color: #b7c590;
+    padding: 20px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 2px;
+    font: 20px "Georgia";
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.header a:hover {
+    background-color: rgba(159, 171, 125, 0.3);
+    color: black;
+}
+
+.header a.active {
+    background-color: rgba(159, 171, 125, 0.65);
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
