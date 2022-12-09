@@ -5,8 +5,8 @@
 * Sprint Boot v2.6.3
 * Python v3.8
 * Fast API
-* Node.js v12.22.1
-* React.js v18.1.0
+* Node.js v18.12.1
+* React.js v18.2.0
 * Neo4j
 * Docker
 
