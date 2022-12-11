@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CharacterSimilarityResponse implements Response<Character> {
 
-    private CharacterResponse person;
+    private CharacterResponse character;
 
     private BigDecimal similarity;
 }

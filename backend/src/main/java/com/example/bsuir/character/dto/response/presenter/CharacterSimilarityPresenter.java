@@ -16,7 +16,7 @@ public class CharacterSimilarityPresenter implements Presenter<Character, Charac
     @Override
     public CharacterSimilarityResponse toDto(Character entity) {
         CharacterSimilarityResponse dto = new CharacterSimilarityResponse();
-        dto.setPerson(personDtoPresenter.toDto(entity));
+        dto.setCharacter(personDtoPresenter.toDto(entity));
         return dto;
     }
 }

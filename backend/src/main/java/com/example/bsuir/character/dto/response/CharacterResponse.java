@@ -21,5 +21,7 @@ public class CharacterResponse implements Response<Character> {
 
     private String description;
 
+    private Long showId;
+
     private String base64Image;
 }
