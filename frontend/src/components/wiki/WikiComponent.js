@@ -1,26 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import WikiService from '../../services/WikiService';
-import CardsComponent from '../card/CardsComponent';
+import {Link} from "react-router-dom";
+import CardComponent from "../card/CardComponent";
 
-class WikiComponent extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			persons: [],
-		};
-	}
+export default function WikiComponent() {
+    const wikiService = new WikiService();
+    const [persons, setPersons] = useState([]);
+    useEffect(() => {
+        wikiService.getAll()
+            .then((response) => response.data)
+            .then((value) => setPersons(value));
+    }, []);
 
-	componentDidMount() {
-		WikiService.getAll().then((response) => {
-			this.setState({persons: response.data});
-		});
-	}
-
-	render() {
-		return (<div className="wiki-container">
-			<CardsComponent persons={this.state.persons}/>
-		</div>);
-	}
+    return (
+        <div className="wiki-container">
+            <div className="cards">
+                {persons
+                    .sort((a, b) => a.id > b.id ? 1 : -1)
+                    .map(person => (
+                        <Link style={{textDecoration: 'none'}} to={`/${person.id}`}>
+                            <CardComponent person={person}/>
+                        </Link>
+                    ))
+                }
+            </div>
+        </div>
+    );
 }
-
-export default WikiComponent;
