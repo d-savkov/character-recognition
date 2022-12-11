@@ -23,8 +23,14 @@ public class RuntimeExceptionHandler {
     }
 
     @ExceptionHandler(value = {ThirdPartyApiException.class})
-    public ResponseEntity<Object> handleIllegalArgumentException(ThirdPartyApiException ex) {
+    public ResponseEntity<Object> handleThirdPartyApiException(ThirdPartyApiException ex) {
         log.error("Third Party Api Exception: {}", ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = {EntityNotFoundException.class})
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex) {
+        log.error("Entity Not Found Exception: {}", ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
