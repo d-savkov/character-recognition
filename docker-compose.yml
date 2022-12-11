@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   neo4j:
-    image: neo4j:latest
+    build: database
     restart: unless-stopped
     ports:
       - "7474:7474"
@@ -10,8 +10,8 @@ services:
       - application
     environment:
       NEO4J_AUTH: neo4j/secret
-      dbms_connector_bolt_listen__address: neo4j:7687
-      dbms_connector_bolt_advertised__address: neo4j:7687
+      dbms.connector.bolt.listen_address: neo4j:7687
+      dbms.connector.bolt.advertised_address: neo4j:7687
     healthcheck:
       test: cypher-shell --username neo4j --password secret 'MATCH (n) RETURN COUNT(n);'
       interval: 10s
@@ -35,7 +35,7 @@ services:
       - application
 
   frontend:
-    build: ./frontend
+    build: frontend
     ports:
       - "3000:3000"
     volumes:
