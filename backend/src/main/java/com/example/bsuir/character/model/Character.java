@@ -1,4 +1,4 @@
-package com.example.bsuir.person.model;
+package com.example.bsuir.character.model;
 
 import com.example.bsuir.image.model.Image;
 import com.example.bsuir.show.model.Show;
@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class Character {
 
     @Id
     @GeneratedValue
@@ -32,13 +32,13 @@ public class Person {
 
     private String imagesSource;
 
-    @Relationship(type = "PERSON", direction = Direction.INCOMING)
+    @Relationship(type = "CHARACTER", direction = Direction.INCOMING)
     private Show show;
 
     @Relationship(type = "IMAGE", direction = Direction.OUTGOING)
     private List<Image> images = new ArrayList<>();
 
-    public Person(String name, String description, String playedBy, String imagesSource, Show show) {
+    public Character(String name, String description, String playedBy, String imagesSource, Show show) {
         this.name = name;
         this.playedBy = playedBy;
         this.description = description;

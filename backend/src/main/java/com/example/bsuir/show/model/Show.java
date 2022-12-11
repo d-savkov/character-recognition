@@ -1,6 +1,6 @@
 package com.example.bsuir.show.model;
 
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.model.Character;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,8 +29,8 @@ public class Show {
 
     private ShowType showType;
 
-    @Relationship(type = "PERSON", direction = Direction.OUTGOING)
-    private List<Person> persons = new ArrayList<>();
+    @Relationship(type = "CHARACTER", direction = Direction.OUTGOING)
+    private List<Character> characters = new ArrayList<>();
 
     public Show(String name, String description, ShowType showType) {
         this.name = name;

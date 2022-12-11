@@ -1,6 +1,6 @@
-package com.example.bsuir.person.dto.response;
+package com.example.bsuir.character.dto.response;
 
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.model.Character;
 import com.example.bsuir.shared.dto.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonResponse implements Response<Person> {
+public class CharacterResponse implements Response<Character> {
 
     private Long id;
 

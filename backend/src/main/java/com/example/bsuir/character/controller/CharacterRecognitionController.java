@@ -1,7 +1,7 @@
-package com.example.bsuir.person.controller;
+package com.example.bsuir.character.controller;
 
-import com.example.bsuir.person.dto.response.PersonSimilarityResponse;
-import com.example.bsuir.person.service.PersonRecognitionService;
+import com.example.bsuir.character.dto.response.CharacterSimilarityResponse;
+import com.example.bsuir.character.service.CharacterRecognitionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,17 +16,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/face-recognition")
 @AllArgsConstructor
-public class PersonRecognitionController {
+public class CharacterRecognitionController {
 
-    private final PersonRecognitionService service;
+    private final CharacterRecognitionService service;
 
     @PostMapping("/most-similar")
-    public List<PersonSimilarityResponse> findMostSimilar(@RequestBody MultipartFile file) {
+    public List<CharacterSimilarityResponse> findMostSimilar(@RequestBody MultipartFile file) {
         return service.findMostSimilar(file);
     }
 
     @PostMapping("/similarity")
-    public List<PersonSimilarityResponse> getAll(@RequestBody MultipartFile file) {
+    public List<CharacterSimilarityResponse> getAll(@RequestBody MultipartFile file) {
         return service.getAll(file);
     }
 }

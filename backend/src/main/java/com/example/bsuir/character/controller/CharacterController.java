@@ -1,8 +1,8 @@
-package com.example.bsuir.person.controller;
+package com.example.bsuir.character.controller;
 
-import com.example.bsuir.person.dto.response.PersonResponse;
-import com.example.bsuir.person.dto.response.presenter.PersonPresenter;
-import com.example.bsuir.person.service.PersonService;
+import com.example.bsuir.character.dto.response.CharacterResponse;
+import com.example.bsuir.character.dto.response.presenter.CharacterPresenter;
+import com.example.bsuir.character.service.CharacterService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,22 +15,22 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping(value = "/wiki")
+@RequestMapping(value = "/show/{showId}/character")
 @AllArgsConstructor
-public class PersonWikiController {
+public class CharacterController {
 
-    private final PersonService service;
-    private final PersonPresenter presenter;
+    private final CharacterService service;
+    private final CharacterPresenter presenter;
 
     @GetMapping()
-    public List<PersonResponse> getAll() {
-        return service.getAll().stream()
+    public List<CharacterResponse> getAllByShowId(@PathVariable Long showId) {
+        return service.getAllByShowId(showId).stream()
                       .map(presenter::toDto)
                       .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public PersonResponse getById(@PathVariable Long id) {
+    public CharacterResponse getById(@PathVariable Long showId, @PathVariable Long id) {
         return presenter.toDto(service.getById(id));
     }
 }

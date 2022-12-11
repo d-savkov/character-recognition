@@ -1,6 +1,6 @@
 package com.example.bsuir.image.model;
 
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.model.Character;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,11 +27,11 @@ public class Image {
     private List<Double> faceDescriptor;
 
     @Relationship(type = "IMAGE", direction = Direction.INCOMING)
-    private Person person;
+    private Character character;
 
-    public Image(String path, List<Double> faceDescriptor, Person person) {
+    public Image(String path, List<Double> faceDescriptor, Character character) {
         this.path = path;
         this.faceDescriptor = faceDescriptor;
-        this.person = person;
+        this.character = character;
     }
 }

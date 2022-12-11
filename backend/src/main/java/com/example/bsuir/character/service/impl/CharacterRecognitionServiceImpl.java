@@ -1,12 +1,12 @@
-package com.example.bsuir.person.service.impl;
+package com.example.bsuir.character.service.impl;
 
+import com.example.bsuir.character.model.Character;
 import com.example.bsuir.euclidean.provider.EuclideanDistanceProvider;
 import com.example.bsuir.facedescriptor.provider.FaceDescriptorProvider;
 import com.example.bsuir.image.service.ImageService;
-import com.example.bsuir.person.dto.response.PersonSimilarityResponse;
-import com.example.bsuir.person.model.Person;
-import com.example.bsuir.person.service.PersonRecognitionService;
-import com.example.bsuir.person.service.PersonService;
+import com.example.bsuir.character.dto.response.CharacterSimilarityResponse;
+import com.example.bsuir.character.service.CharacterRecognitionService;
+import com.example.bsuir.character.service.CharacterService;
 import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,16 +23,16 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PersonRecognitionServiceImpl implements PersonRecognitionService {
+public class CharacterRecognitionServiceImpl implements CharacterRecognitionService {
 
     private final FaceDescriptorProvider faceDescriptorProvider;
     private final EuclideanDistanceProvider euclideanDistanceProvider;
-    private final PersonService personService;
+    private final CharacterService characterService;
     private final ImageService imageService;
-    private final Presenter<Person, PersonSimilarityResponse> faceRecognitionPresenter;
+    private final Presenter<Character, CharacterSimilarityResponse> faceRecognitionPresenter;
 
     @Override
-    public List<PersonSimilarityResponse> findMostSimilar(MultipartFile file) {
+    public List<CharacterSimilarityResponse> findMostSimilar(MultipartFile file) {
         Map<Long, Double> euclideanImageMap = getEuclideanMap(file);
         Double euclideanMin = euclideanImageMap.values().stream()
                                                .min(Double::compareTo)
@@ -42,8 +42,8 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
             return euclideanImageMap.keySet().stream()
                                     .filter(key -> Objects.equals(euclideanImageMap.get(key), euclideanMin))
                                     .map(key -> {
-                                        Person person = personService.getByImageId(key);
-                                        PersonSimilarityResponse dto = faceRecognitionPresenter.toDto(person);
+                                        Character character = characterService.getByImageId(key);
+                                        CharacterSimilarityResponse dto = faceRecognitionPresenter.toDto(character);
                                         dto.setSimilarity(euclideanToSimilarity(euclideanImageMap.get(key)));
                                         return dto;
                                     })
@@ -54,10 +54,10 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
     }
 
     @Override
-    public List<PersonSimilarityResponse> getAll(MultipartFile file) {
-        List<PersonSimilarityResponse> result = new ArrayList<>();
+    public List<CharacterSimilarityResponse> getAll(MultipartFile file) {
+        List<CharacterSimilarityResponse> result = new ArrayList<>();
         getPersonSimilarityMap(getEuclideanMap(file)).forEach((person, similarity) -> {
-            PersonSimilarityResponse dto = faceRecognitionPresenter.toDto(person);
+            CharacterSimilarityResponse dto = faceRecognitionPresenter.toDto(person);
             dto.setSimilarity(similarity);
             result.add(dto);
         });
@@ -76,13 +76,13 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
         return result;
     }
 
-    private Map<Person, BigDecimal> getPersonSimilarityMap(Map<Long, Double> euclideanImageMap) {
-        Map<Person, BigDecimal> result = new HashMap<>();
+    private Map<Character, BigDecimal> getPersonSimilarityMap(Map<Long, Double> euclideanImageMap) {
+        Map<Character, BigDecimal> result = new HashMap<>();
         euclideanImageMap.forEach((imageId, euclidean) -> {
-            Person person = personService.getByImageId(imageId);
+            Character character = characterService.getByImageId(imageId);
             BigDecimal similarity = euclideanToSimilarity(euclidean);
-            if (!result.containsKey(person) || similarity.compareTo(result.get(person)) > 0) {
-                result.put(person, similarity);
+            if (!result.containsKey(character) || similarity.compareTo(result.get(character)) > 0) {
+                result.put(character, similarity);
             }
         });
         return result;

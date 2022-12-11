@@ -1,6 +1,6 @@
 package com.example.bsuir.show.dto.response.presenter;
 
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.model.Character;
 import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import com.example.bsuir.show.dto.response.ShowResponse;
 import com.example.bsuir.show.model.Show;
@@ -16,7 +16,7 @@ public class ShowResponsePresenter implements Presenter<Show, ShowResponse> {
                 entity.getName(),
                 entity.getDescription(),
                 entity.getShowType(),
-                entity.getPersons().stream().map(Person::getId).toList()
+                entity.getCharacters().stream().map(Character::getId).toList()
         );
     }
 }

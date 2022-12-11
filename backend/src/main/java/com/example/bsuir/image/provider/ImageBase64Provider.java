@@ -1,8 +1,8 @@
 package com.example.bsuir.image.provider;
 
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.model.Character;
 
 public interface ImageBase64Provider {
 
-    String get(Person person);
+    String get(Character character);
 }

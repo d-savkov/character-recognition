@@ -1,21 +1,21 @@
-package com.example.bsuir.person.dto.response.presenter;
+package com.example.bsuir.character.dto.response.presenter;
 
+import com.example.bsuir.character.model.Character;
 import com.example.bsuir.image.provider.ImageBase64Provider;
-import com.example.bsuir.person.dto.response.PersonResponse;
-import com.example.bsuir.person.model.Person;
+import com.example.bsuir.character.dto.response.CharacterResponse;
 import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PersonPresenter implements Presenter<Person, PersonResponse> {
+public class CharacterPresenter implements Presenter<Character, CharacterResponse> {
 
     private final ImageBase64Provider imageBase64Provider;
 
     @Override
-    public PersonResponse toDto(Person entity) {
-        return new PersonResponse(
+    public CharacterResponse toDto(Character entity) {
+        return new CharacterResponse(
                 entity.getId(),
                 entity.getName(),
                 entity.getPlayedBy(),
