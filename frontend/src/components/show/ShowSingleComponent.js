@@ -23,6 +23,9 @@ export default function ShowSingleComponent() {
                     <Typography variant="p" component="div">
                         {show.showType}
                     </Typography>
+                    <Typography variant="p" component="div">
+                        {show.description}
+                    </Typography>
                 </>
             )}
         </div>
