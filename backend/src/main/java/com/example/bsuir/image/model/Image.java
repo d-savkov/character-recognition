@@ -1,7 +1,6 @@
 package com.example.bsuir.image.model;
 
 import com.example.bsuir.person.model.Person;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Image {
 
     @Id

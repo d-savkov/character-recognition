@@ -1,7 +1,6 @@
-package com.example.bsuir.person.model;
+package com.example.bsuir.show.model;
 
-import com.example.bsuir.image.model.Image;
-import com.example.bsuir.show.model.Show;
+import com.example.bsuir.person.model.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class Show {
 
     @Id
     @GeneratedValue
@@ -26,23 +25,16 @@ public class Person {
 
     private String name;
 
-    private String playedBy;
-
     private String description;
 
-    private String imagesSource;
+    private ShowType showType;
 
-    @Relationship(type = "PERSON", direction = Direction.INCOMING)
-    private Show show;
+    @Relationship(type = "PERSON", direction = Direction.OUTGOING)
+    private List<Person> persons = new ArrayList<>();
 
-    @Relationship(type = "IMAGE", direction = Direction.OUTGOING)
-    private List<Image> images = new ArrayList<>();
-
-    public Person(String name, String description, String playedBy, String imagesSource, Show show) {
+    public Show(String name, String description, ShowType showType) {
         this.name = name;
-        this.playedBy = playedBy;
         this.description = description;
-        this.imagesSource = imagesSource;
-        this.show = show;
+        this.showType = showType;
     }
 }
