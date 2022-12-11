@@ -3,11 +3,11 @@ package com.example.bsuir.person.service.impl;
 import com.example.bsuir.euclidean.provider.EuclideanDistanceProvider;
 import com.example.bsuir.facedescriptor.provider.FaceDescriptorProvider;
 import com.example.bsuir.image.service.ImageService;
-import com.example.bsuir.person.dto.PersonSimilarityDto;
+import com.example.bsuir.person.dto.response.PersonSimilarityResponse;
 import com.example.bsuir.person.model.Person;
 import com.example.bsuir.person.service.PersonRecognitionService;
 import com.example.bsuir.person.service.PersonService;
-import com.example.bsuir.shared.dto.Presenter;
+import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,10 +29,10 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
     private final EuclideanDistanceProvider euclideanDistanceProvider;
     private final PersonService personService;
     private final ImageService imageService;
-    private final Presenter<Person, PersonSimilarityDto> faceRecognitionPresenter;
+    private final Presenter<Person, PersonSimilarityResponse> faceRecognitionPresenter;
 
     @Override
-    public List<PersonSimilarityDto> findMostSimilar(MultipartFile file) {
+    public List<PersonSimilarityResponse> findMostSimilar(MultipartFile file) {
         Map<Long, Double> euclideanImageMap = getEuclideanMap(file);
         Double euclideanMin = euclideanImageMap.values().stream()
                                                .min(Double::compareTo)
@@ -43,7 +43,7 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
                                     .filter(key -> Objects.equals(euclideanImageMap.get(key), euclideanMin))
                                     .map(key -> {
                                         Person person = personService.getByImageId(key);
-                                        PersonSimilarityDto dto = faceRecognitionPresenter.toDto(person);
+                                        PersonSimilarityResponse dto = faceRecognitionPresenter.toDto(person);
                                         dto.setSimilarity(euclideanToSimilarity(euclideanImageMap.get(key)));
                                         return dto;
                                     })
@@ -54,10 +54,10 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
     }
 
     @Override
-    public List<PersonSimilarityDto> getAll(MultipartFile file) {
-        List<PersonSimilarityDto> result = new ArrayList<>();
+    public List<PersonSimilarityResponse> getAll(MultipartFile file) {
+        List<PersonSimilarityResponse> result = new ArrayList<>();
         getPersonSimilarityMap(getEuclideanMap(file)).forEach((person, similarity) -> {
-            PersonSimilarityDto dto = faceRecognitionPresenter.toDto(person);
+            PersonSimilarityResponse dto = faceRecognitionPresenter.toDto(person);
             dto.setSimilarity(similarity);
             result.add(dto);
         });
@@ -67,7 +67,7 @@ public class PersonRecognitionServiceImpl implements PersonRecognitionService {
     private Map<Long, Double> getEuclideanMap(MultipartFile file) {
         List<Double> faceDescriptor = new ArrayList<>(faceDescriptorProvider.get(file).values());
         Map<Long, Double> result = new HashMap<>();
-        imageService.findAll().forEach(image -> {
+        imageService.getAll().forEach(image -> {
             result.put(
                     image.getId(),
                     euclideanDistanceProvider.get(image.getFaceDescriptor(), faceDescriptor)

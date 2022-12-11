@@ -1,7 +1,7 @@
-package com.example.bsuir.person.dto;
+package com.example.bsuir.person.dto.response;
 
 import com.example.bsuir.person.model.Person;
-import com.example.bsuir.shared.dto.Dto;
+import com.example.bsuir.shared.dto.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonDto implements Dto<Person> {
+public class PersonResponse implements Response<Person> {
 
     private Long id;
 

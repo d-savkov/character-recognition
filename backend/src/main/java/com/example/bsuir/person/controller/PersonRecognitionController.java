@@ -1,6 +1,6 @@
 package com.example.bsuir.person.controller;
 
-import com.example.bsuir.person.dto.PersonSimilarityDto;
+import com.example.bsuir.person.dto.response.PersonSimilarityResponse;
 import com.example.bsuir.person.service.PersonRecognitionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,15 +18,15 @@ import java.util.List;
 @AllArgsConstructor
 public class PersonRecognitionController {
 
-    private final PersonRecognitionService personRecognitionService;
+    private final PersonRecognitionService service;
 
     @PostMapping("/most-similar")
-    public List<PersonSimilarityDto> findMostSimilar(@RequestBody MultipartFile file) {
-        return personRecognitionService.findMostSimilar(file);
+    public List<PersonSimilarityResponse> findMostSimilar(@RequestBody MultipartFile file) {
+        return service.findMostSimilar(file);
     }
 
     @PostMapping("/similarity")
-    public List<PersonSimilarityDto> getAll(@RequestBody MultipartFile file) {
-        return personRecognitionService.getAll(file);
+    public List<PersonSimilarityResponse> getAll(@RequestBody MultipartFile file) {
+        return service.getAll(file);
     }
 }

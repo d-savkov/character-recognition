@@ -1,13 +1,13 @@
 package com.example.bsuir.person.service;
 
-import com.example.bsuir.person.dto.PersonSimilarityDto;
+import com.example.bsuir.person.dto.response.PersonSimilarityResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 public interface PersonRecognitionService {
 
-    List<PersonSimilarityDto> findMostSimilar(MultipartFile file);
+    List<PersonSimilarityResponse> findMostSimilar(MultipartFile file);
 
-    List<PersonSimilarityDto> getAll(MultipartFile file);
+    List<PersonSimilarityResponse> getAll(MultipartFile file);
 }

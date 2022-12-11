@@ -1,14 +1,9 @@
 package com.example.bsuir.person.service;
 
 import com.example.bsuir.person.model.Person;
+import com.example.bsuir.shared.service.Service;
 
-import java.util.List;
-
-public interface PersonService {
-
-    List<Person> getAll();
-
-    Person getById(Long id);
+public interface PersonService extends Service<Person, Long> {
 
     Person getByImageId(Long imageId);
 }

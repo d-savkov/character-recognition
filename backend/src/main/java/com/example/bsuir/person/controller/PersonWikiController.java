@@ -1,7 +1,7 @@
 package com.example.bsuir.person.controller;
 
-import com.example.bsuir.person.dto.PersonDto;
-import com.example.bsuir.person.dto.presenter.PersonPresenter;
+import com.example.bsuir.person.dto.response.PersonResponse;
+import com.example.bsuir.person.dto.response.presenter.PersonPresenter;
 import com.example.bsuir.person.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,18 +19,18 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PersonWikiController {
 
-    private final PersonService personService;
-    private final PersonPresenter personPresenter;
+    private final PersonService service;
+    private final PersonPresenter presenter;
 
     @GetMapping()
-    public List<PersonDto> getAll() {
-        return personService.getAll().stream()
-                            .map(personPresenter::toDto)
-                            .collect(Collectors.toList());
+    public List<PersonResponse> getAll() {
+        return service.getAll().stream()
+                      .map(presenter::toDto)
+                      .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public PersonDto getById(@PathVariable Long id) {
-        return personPresenter.toDto(personService.getById(id));
+    public PersonResponse getById(@PathVariable Long id) {
+        return presenter.toDto(service.getById(id));
     }
 }
