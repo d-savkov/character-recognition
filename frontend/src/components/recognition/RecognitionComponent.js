@@ -7,11 +7,11 @@ export default function RecognitionComponent() {
     const recognitionService = new RecognitionService();
     const [selectedFile, setSelectedFile] = useState(null);
     const [image, setImage] = useState(null);
-    const [persons, setPersons] = useState([]);
+    const [characters, setCharacters] = useState([]);
 
     const onFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
-        setPersons([])
+        setCharacters([])
         if (event.target.files && event.target.files[0]) {
             let reader = new FileReader();
             reader.onload = (e) => {
@@ -22,20 +22,20 @@ export default function RecognitionComponent() {
     };
 
     const onFind = () => {
-        setPersons([])
-        recognitionService.findMostSimilar(formData)
-            .then((response) => setPersons(response.data));
+        setCharacters([])
+        recognitionService.findMostSimilar(formData())
+            .then((response) => setCharacters(response.data));
     };
 
     const onShowAll = () => {
-        setPersons([])
-        recognitionService.getAll(formData)
-            .then((response) => setPersons(response.data));
+        setCharacters([])
+        recognitionService.getAll(formData())
+            .then((response) => setCharacters(response.data));
     };
 
     const onRemove = () => {
         setSelectedFile(null);
-        setPersons([])
+        setCharacters([])
         setImage(null);
     };
 
@@ -68,14 +68,18 @@ export default function RecognitionComponent() {
                     </div>
                     <div className="recognition-container">
                         <div className="cards">
-                            {persons
+                            {characters
                                 .sort((a, b) => a.similarity < b.similarity ? 1 : -1)
-                                .map(p => (<div key={p.person.id}>
-                                    <Link style={{textDecoration: 'none'}} to={`/${p.person.id}`}>
-                                        <CardComponent person={p.person}/>
-                                    </Link>
-                                    <p>{p.similarity}%</p>
-                                </div>))}
+                                .map(c => (
+                                    <div key={c.character.id}>
+                                        <Link style={{textDecoration: 'none'}}
+                                              to={`/show/${c.character.showId}/character/${c.character.id}`}>
+                                            <CardComponent person={c.character}/>
+                                        </Link>
+                                        <p>{c.similarity}%</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
