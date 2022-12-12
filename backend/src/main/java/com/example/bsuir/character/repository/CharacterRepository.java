@@ -17,8 +17,7 @@ public interface CharacterRepository extends Neo4jRepository<Character, Long> {
         );
     }
 
-    @Query("MATCH (s:Show)-[:CHARACTER]->(c:Character) WHERE ID(s) = $showId RETURN c")
-    List<Character> findAllByShowId(@Param("showId") Long showId);
+    List<Character> findAllByShowId(Long showId);
 
     @Query("MATCH (c:Character)-[:IMAGE]->(i:Image) WHERE ID(i) = $imageId RETURN c")
     Optional<Character> findByImageId(@Param("imageId") Long imageId);

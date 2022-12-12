@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,6 +21,4 @@ public class ShowResponse implements Response<Show> {
     private String description;
 
     private ShowType showType;
-
-    private List<Long> persons;
 }

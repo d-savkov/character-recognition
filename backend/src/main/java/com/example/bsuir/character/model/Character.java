@@ -5,6 +5,7 @@ import com.example.bsuir.show.model.Show;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -17,6 +18,7 @@ import java.util.List;
 @Node
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Character {
 
@@ -32,7 +34,7 @@ public class Character {
 
     private String imagesSource;
 
-    @Relationship(type = "CHARACTER", direction = Direction.INCOMING)
+    @Relationship(type = "CHARACTER_OF", direction = Direction.OUTGOING)
     private Show show;
 
     @Relationship(type = "IMAGE", direction = Direction.OUTGOING)
