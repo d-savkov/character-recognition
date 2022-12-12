@@ -5,6 +5,7 @@ import com.example.bsuir.character.dto.response.presenter.CharacterPresenter;
 import com.example.bsuir.character.service.CharacterService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,10 @@ public class CharacterController {
     @GetMapping("/{id}")
     public CharacterResponse getById(@PathVariable Long showId, @PathVariable Long id) {
         return presenter.toDto(service.getById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long showId, @PathVariable Long id) {
+        service.deleteById(id);
     }
 }

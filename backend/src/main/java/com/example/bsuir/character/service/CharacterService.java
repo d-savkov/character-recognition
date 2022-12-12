@@ -10,4 +10,6 @@ public interface CharacterService extends Service<Character, Long> {
     List<Character> getAllByShowId(Long showId);
 
     Character getByImageId(Long imageId);
+
+    void deleteById(Long id);
 }

@@ -12,25 +12,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CharacterServiceImpl implements CharacterService {
 
-    private final CharacterRepository characterRepository;
+    private final CharacterRepository repository;
 
     @Override
     public List<Character> getAll() {
-        return characterRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public Character getById(Long id) {
-        return characterRepository.findByIdOrThrow(id);
+        return repository.findByIdOrThrow(id);
     }
 
     @Override
     public List<Character> getAllByShowId(Long showId) {
-        return characterRepository.findAllByShowId(showId);
+        return repository.findAllByShowId(showId);
     }
 
     @Override
     public Character getByImageId(Long imageId) {
-        return characterRepository.findByImageId(imageId).orElseThrow();
+        return repository.findByImageId(imageId).orElseThrow();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
