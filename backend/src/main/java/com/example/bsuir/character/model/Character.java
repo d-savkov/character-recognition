@@ -1,6 +1,5 @@
 package com.example.bsuir.character.model;
 
-import com.example.bsuir.image.model.Image;
 import com.example.bsuir.show.model.Show;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +10,6 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.Relationship.Direction;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Node
 @Getter
@@ -32,19 +28,13 @@ public class Character {
 
     private String description;
 
-    private String imagesSource;
-
     @Relationship(type = "CHARACTER_OF", direction = Direction.OUTGOING)
     private Show show;
 
-    @Relationship(type = "IMAGE", direction = Direction.OUTGOING)
-    private List<Image> images = new ArrayList<>();
-
-    public Character(String name, String description, String playedBy, String imagesSource, Show show) {
+    public Character(String name, String description, String playedBy, Show show) {
         this.name = name;
         this.playedBy = playedBy;
         this.description = description;
-        this.imagesSource = imagesSource;
         this.show = show;
     }
 }

@@ -26,7 +26,7 @@ public class Image {
 
     private List<Double> faceDescriptor;
 
-    @Relationship(type = "IMAGE", direction = Direction.INCOMING)
+    @Relationship(type = "IMAGE_OF", direction = Direction.OUTGOING)
     private Character character;
 
     public Image(String path, List<Double> faceDescriptor, Character character) {
