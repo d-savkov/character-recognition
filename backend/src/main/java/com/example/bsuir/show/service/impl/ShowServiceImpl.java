@@ -1,5 +1,7 @@
 package com.example.bsuir.show.service.impl;
 
+import com.example.bsuir.character.model.Character;
+import com.example.bsuir.character.service.CharacterService;
 import com.example.bsuir.show.dto.request.CreateShowRequest;
 import com.example.bsuir.show.dto.request.mapper.CreateShowRequestMapper;
 import com.example.bsuir.show.model.Show;
@@ -17,6 +19,8 @@ public class ShowServiceImpl implements ShowService {
     private final ShowRepository repository;
     private final CreateShowRequestMapper createMapper;
 
+    private final CharacterService characterService;
+
     @Override
     public Show getById(Long id) {
         return repository.findByIdOrThrow(id);
@@ -30,5 +34,14 @@ public class ShowServiceImpl implements ShowService {
     @Override
     public Show create(CreateShowRequest request) {
         return repository.save(createMapper.toEntity(request));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        List<Character> characters = characterService.getAllByShowId(id);
+        repository.deleteById(id);
+        characters.stream()
+                  .map(Character::getId)
+                  .forEach(characterService::deleteById);
     }
 }

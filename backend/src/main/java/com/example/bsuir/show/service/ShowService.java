@@ -7,4 +7,6 @@ import com.example.bsuir.show.model.Show;
 public interface ShowService extends Service<Show, Long> {
 
     Show create(CreateShowRequest request);
+
+    void deleteById(Long id);
 }

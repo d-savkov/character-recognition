@@ -6,6 +6,7 @@ import com.example.bsuir.show.dto.response.presenter.ShowResponsePresenter;
 import com.example.bsuir.show.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,5 +38,10 @@ public class ShowController {
     @PostMapping()
     public ShowResponse create(@RequestBody CreateShowRequest request) {
         return presenter.toDto(service.create(request));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        service.deleteById(id);
     }
 }
