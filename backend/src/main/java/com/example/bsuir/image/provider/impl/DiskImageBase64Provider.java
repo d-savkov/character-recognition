@@ -3,7 +3,7 @@ package com.example.bsuir.image.provider.impl;
 import com.example.bsuir.character.model.Character;
 import com.example.bsuir.image.model.Image;
 import com.example.bsuir.image.provider.ImageBase64Provider;
-import com.example.bsuir.image.repository.ImageRepository;
+import com.example.bsuir.image.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class DiskImageBase64Provider implements ImageBase64Provider {
 
-    private final ImageRepository imageRepository;
+    private final ImageService imageService;
 
     @Override
     public String get(Character character) {
@@ -37,7 +37,7 @@ public class DiskImageBase64Provider implements ImageBase64Provider {
     }
 
     private File getMainImage(Character character) {
-        List<Image> images = imageRepository.findAllByCharacterId(character.getId());
+        List<Image> images = imageService.getAllByCharacterId(character.getId());
         List<File> files = new ArrayList<>();
         for (Image image : images) {
             try {

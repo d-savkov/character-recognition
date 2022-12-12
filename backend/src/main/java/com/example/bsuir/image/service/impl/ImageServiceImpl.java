@@ -12,15 +12,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
 
-    private final ImageRepository imageRepository;
+    private final ImageRepository repository;
 
     @Override
     public Image getById(Long id) {
-        return imageRepository.findByIdOrThrow(id);
+        return repository.findByIdOrThrow(id);
     }
 
     @Override
     public List<Image> getAll() {
-        return imageRepository.findAll();
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Image> getAllByCharacterId(Long characterId) {
+        return repository.findAllByCharacterId(characterId);
     }
 }
