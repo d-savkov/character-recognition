@@ -1,10 +1,10 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom';
-import {Layout} from './components/Layout';
-import RecognitionComponent from './components/recognition/RecognitionComponent';
-import ShowComponent from "./components/show/ShowComponent";
-import ShowSingleComponent from "./components/show/ShowSingleComponent";
-import CharacterSingleComponent from "./components/character/CharacterSingleComponent";
+import {Layout} from './shared/layout/Layout';
+import RecognitionComponent from './recognition/component/RecognitionComponent';
+import ShowComponent from "./show/component/ShowComponent";
+import ShowSingleComponent from "./show/component/ShowSingleComponent";
+import CharacterSingleComponent from "./character/component/CharacterSingleComponent";
 
 function App() {
     return (<div className="App">

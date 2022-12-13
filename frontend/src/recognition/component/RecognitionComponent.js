@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import RecognitionService from '../../services/RecognitionService';
-import CardComponent from '../card/CardComponent';
+import RecognitionService from '../service/RecognitionService';
+import CardComponent from '../../shared/temp/CardComponent';
 import {Link} from 'react-router-dom';
 
 export default function RecognitionComponent() {

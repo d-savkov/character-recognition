@@ -1,8 +1,8 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import ShowService from "../../services/ShowService";
+import ShowService from "../service/ShowService";
 import {Typography} from "@mui/material";
-import CharacterComponent from "../character/CharacterComponent";
+import CharacterComponent from "../../character/component/CharacterComponent";
 
 export default function ShowSingleComponent() {
     const showService = new ShowService();

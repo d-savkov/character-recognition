@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import ImageComponent from '../image/ImageComponent';
-import CharacterService from "../../services/CharacterService";
+import ImageComponent from '../../shared/temp/ImageComponent';
+import CharacterService from "../service/CharacterService";
 
 export default function CharacterSingleComponent() {
     const characterService = new CharacterService();

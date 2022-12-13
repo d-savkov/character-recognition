@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageComponent from '../image/ImageComponent';
+import ImageComponent from './ImageComponent';
 
 export default function CardComponent(props) {
     const person = props.person;

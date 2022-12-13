@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import CharacterService from "../../services/CharacterService";
-import CardComponent from "../card/CardComponent";
+import CharacterService from "../service/CharacterService";
+import CardComponent from "../../shared/temp/CardComponent";
 
 export default function CharacterComponent(props) {
     const characterService = new CharacterService();
