@@ -2,19 +2,18 @@ import React, {useEffect, useState} from 'react';
 import ShowService from "../service/ShowService";
 import {Link} from "react-router-dom";
 import Table from 'react-bootstrap/Table';
+import Popup from "../../shared/popup/Popup";
+import '../index.css';
 
 export default function ShowComponent() {
     const showService = new ShowService();
     const [shows, setShows] = useState([]);
+    const [popupActive, setPopupActive] = useState(true);
     useEffect(() => {
         showService.getAll()
             .then((response) => response.data)
             .then((value) => setShows(value));
     }, []);
-
-    const onCreate = () => {
-        console.log("create");
-    }
 
     const onUpdate = (id) => {
         console.log("update" + id);
@@ -64,13 +63,16 @@ export default function ShowComponent() {
                 }
                 <tr>
                     <td colspan="4">
-                        <button type="button" className="btn btn-outline-success btn-lg row-btn" onClick={onCreate}>
+                        <button type="button" className="btn btn-outline-success btn-lg row-btn"
+                                onClick={() => setPopupActive(true)}>
                             <i className="bi bi-plus-circle"/>
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </Table>
+            <Popup active={popupActive} setActive={setPopupActive}>
+            </Popup>
         </div>
     );
 }
