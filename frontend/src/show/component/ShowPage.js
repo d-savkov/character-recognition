@@ -4,7 +4,7 @@ import ShowService from "../service/ShowService";
 import {Typography} from "@mui/material";
 import CharacterComponent from "../../character/component/CharacterComponent";
 
-export default function ShowSingleComponent() {
+export default function ShowPage() {
     const showService = new ShowService();
     const {id} = useParams();
     const [show, setShow] = useState(null);

@@ -3,9 +3,9 @@ import ShowService from "../service/ShowService";
 import {Link} from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import Popup from "../../shared/popup/Popup";
-import '../index.css';
+import './show-table.css';
 
-export default function ShowComponent() {
+export default function ShowTable() {
     const showService = new ShowService();
     const [shows, setShows] = useState([]);
     const [popupActive, setPopupActive] = useState(true);
