@@ -16,4 +16,14 @@ export default class ShowService {
             request,
         )
     }
+
+    update(id, request) {
+        return axios.put(`${SHOW_REST_API_URL}/${id}`,
+            request
+        )
+    }
+
+    deleteById(id) {
+        return axios.delete(`${SHOW_REST_API_URL}/${id}`);
+    }
 }
