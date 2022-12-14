@@ -1,11 +1,14 @@
 package com.example.bsuir.character.dto.response;
 
 import com.example.bsuir.character.model.Character;
+import com.example.bsuir.image.dto.ImageResponse;
 import com.example.bsuir.shared.dto.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +26,5 @@ public class CharacterResponse implements Response<Character> {
 
     private Long showId;
 
-    private String base64Image;
+    private List<ImageResponse> images;
 }

@@ -2,7 +2,8 @@ package com.example.bsuir.character.dto.response.presenter;
 
 import com.example.bsuir.character.dto.response.CharacterResponse;
 import com.example.bsuir.character.model.Character;
-import com.example.bsuir.image.provider.ImageBase64Provider;
+import com.example.bsuir.image.dto.presenter.ImagePresenter;
+import com.example.bsuir.image.repository.ImageRepository;
 import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CharacterPresenter implements Presenter<Character, CharacterResponse> {
 
-    private final ImageBase64Provider imageBase64Provider;
+    private final ImagePresenter imagePresenter;
+    private final ImageRepository imageRepository;
 
     @Override
     public CharacterResponse toDto(Character entity) {
@@ -21,7 +23,7 @@ public class CharacterPresenter implements Presenter<Character, CharacterRespons
                 entity.getPlayedBy(),
                 entity.getDescription(),
                 entity.getShow().getId(),
-                imageBase64Provider.get(entity)
+                imageRepository.findAllByCharacterId(entity.getId()).stream().map(imagePresenter::toDto).toList()
         );
     }
 }
