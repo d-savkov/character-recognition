@@ -12,6 +12,10 @@
 
 ## Start Project Locally
 
+1. Create [.env](.env) file locally.
+2. Copy all the values from the [.env.tpl](.env.tpl) to the [.env](.env).
+3. Run from the terminal:
+
 ```shell
 docker-compose up
 ```
