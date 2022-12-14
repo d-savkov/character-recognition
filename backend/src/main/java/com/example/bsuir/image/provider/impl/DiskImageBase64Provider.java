@@ -41,7 +41,7 @@ public class DiskImageBase64Provider implements ImageBase64Provider {
         List<File> files = new ArrayList<>();
         for (Image image : images) {
             try {
-                files.add(ResourceUtils.getFile("classpath:image/" + image.getPath()));
+                files.add(ResourceUtils.getFile("classpath:image/" + image.getKeyName()));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }

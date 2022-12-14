@@ -22,15 +22,15 @@ public class Image {
     @GeneratedValue
     private Long id;
 
-    private String path;
+    private String keyName;
 
     private List<Double> faceDescriptor;
 
     @Relationship(type = "IMAGE_OF", direction = Direction.OUTGOING)
     private Character character;
 
-    public Image(String path, List<Double> faceDescriptor, Character character) {
-        this.path = path;
+    public Image(String keyName, List<Double> faceDescriptor, Character character) {
+        this.keyName = keyName;
         this.faceDescriptor = faceDescriptor;
         this.character = character;
     }
