@@ -1,6 +1,12 @@
 spring:
   neo4j:
-    uri: ${NEO4J_URI}
+    uri: bolt://localhost:${NEO4J_PORT}
     authentication:
       username: ${NEO4J_USERNAME}
       password: ${NEO4J_PASSWORD}
+
+aws:
+  default-region: ${AWS_DEFAULT_REGION}
+  s3:
+    bucket-name: ${AWS_S3_BUCKET_NAME}
+    presigned-url-expiration: 10
