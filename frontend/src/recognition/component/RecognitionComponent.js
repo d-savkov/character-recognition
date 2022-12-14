@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import RecognitionService from '../service/RecognitionService';
 import CardComponent from '../../shared/temp/CardComponent';
 import {Link} from 'react-router-dom';
+import FaceDescriptorProvider from "../service/FaceDescriptorProvider";
 
 export default function RecognitionComponent() {
+    const descriptorProvider = new FaceDescriptorProvider();
     const recognitionService = new RecognitionService();
     const [selectedFile, setSelectedFile] = useState(null);
     const [image, setImage] = useState(null);
@@ -23,14 +25,24 @@ export default function RecognitionComponent() {
 
     const onFind = () => {
         setCharacters([])
-        recognitionService.findMostSimilar(formData())
-            .then((response) => setCharacters(response.data));
+        descriptorProvider.getFaceDescriptor(formData())
+            .then((response) => {
+                recognitionService.getMostSimilar(response.data)
+                    .then((response) => {
+                        setCharacters(response.data)
+                    });
+            })
     };
 
     const onShowAll = () => {
         setCharacters([])
-        recognitionService.getAll(formData())
-            .then((response) => setCharacters(response.data));
+        descriptorProvider.getFaceDescriptor(formData())
+            .then((response) => {
+                recognitionService.getAll(response.data)
+                    .then((response) => {
+                        setCharacters(response.data)
+                    });
+            })
     };
 
     const onRemove = () => {

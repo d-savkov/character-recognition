@@ -1,29 +1,20 @@
 import axios from 'axios';
 
-const RECOGNITION_REST_API_URL = 'http://localhost:8080/face-recognition';
+const RECOGNITION_REST_API_URL = 'http://localhost:8080/recognition';
 
 export default class RecognitionService {
-    findMostSimilar(formData) {
+
+    getAll(request) {
         return axios.post(
-            `${RECOGNITION_REST_API_URL}/most-similar`,
-            formData,
-            {
-                headers: {
-                    "Content-type": "multipart/form-data",
-                },
-            }
+            RECOGNITION_REST_API_URL,
+            request,
         )
     }
 
-    getAll(formData) {
+    getMostSimilar(request) {
         return axios.post(
-            `${RECOGNITION_REST_API_URL}/similarity`,
-            formData,
-            {
-                headers: {
-                    "Content-type": "multipart/form-data",
-                },
-            }
+            `${RECOGNITION_REST_API_URL}/most-similar`,
+            request
         )
     }
 }
