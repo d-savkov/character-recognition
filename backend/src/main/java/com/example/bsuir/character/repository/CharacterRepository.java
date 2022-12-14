@@ -17,6 +17,12 @@ public interface CharacterRepository extends Neo4jRepository<Character, Long> {
         );
     }
 
+    default Character findByImageIdOrThrow(Long imageId) {
+        return findByImageId(imageId).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Can't find Character by imageId=%s", imageId))
+        );
+    }
+
     List<Character> findAllByShowId(Long showId);
 
     @Query("MATCH (i:Image)-[:IMAGE_OF]->(c:Character) WHERE ID(i) = $imageId RETURN c")

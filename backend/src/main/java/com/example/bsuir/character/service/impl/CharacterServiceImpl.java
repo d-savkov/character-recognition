@@ -31,7 +31,8 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public Character getByImageId(Long imageId) {
-        return repository.findByImageId(imageId).orElseThrow();
+        Character character = repository.findByImageIdOrThrow(imageId);
+        return repository.findByIdOrThrow(character.getId());
     }
 
     @Override

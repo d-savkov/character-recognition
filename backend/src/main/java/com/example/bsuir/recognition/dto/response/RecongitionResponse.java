@@ -1,5 +1,6 @@
-package com.example.bsuir.character.dto.response;
+package com.example.bsuir.recognition.dto.response;
 
+import com.example.bsuir.character.dto.response.CharacterResponse;
 import com.example.bsuir.character.model.Character;
 import com.example.bsuir.shared.dto.response.Response;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CharacterSimilarityResponse implements Response<Character> {
+public class RecongitionResponse implements Response<Character> {
 
     private CharacterResponse character;
 
