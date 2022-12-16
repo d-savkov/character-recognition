@@ -21,33 +21,12 @@ public class AwsS3PresignServiceImpl implements AwsS3PresignService {
 
     @Override
     public String getPresignUploadUrl(String keyName) {
-        GetObjectRequest getObjectRequest = GetObjectRequest
-                .builder()
+        PutObjectRequest objectRequest = PutObjectRequest.builder()
                 .bucket(awsProperty.getS3().getBucketName())
                 .key(keyName)
                 .build();
 
-        GetObjectPresignRequest getObjectPresignRequest = GetObjectPresignRequest
-                .builder()
-                .signatureDuration(awsProperty.getS3().getPresignedUrlExpirationDuration())
-                .getObjectRequest(getObjectRequest)
-                .build();
-
-        PresignedGetObjectRequest presignedGetObjectRequest = s3Presigner.presignGetObject(getObjectPresignRequest);
-
-        return presignedGetObjectRequest.url().toString();
-    }
-
-    @Override
-    public String getPresignDownloadUrl(String keyName) {
-        PutObjectRequest objectRequest = PutObjectRequest
-                .builder()
-                .bucket(awsProperty.getS3().getBucketName())
-                .key(keyName)
-                .build();
-
-        PutObjectPresignRequest presignRequest = PutObjectPresignRequest
-                .builder()
+        PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
                 .signatureDuration(awsProperty.getS3().getPresignedUrlExpirationDuration())
                 .putObjectRequest(objectRequest)
                 .build();
@@ -55,5 +34,22 @@ public class AwsS3PresignServiceImpl implements AwsS3PresignService {
         PresignedPutObjectRequest presignedRequest = s3Presigner.presignPutObject(presignRequest);
 
         return presignedRequest.url().toString();
+    }
+
+    @Override
+    public String getPresignDownloadUrl(String keyName) {
+        GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                .bucket(awsProperty.getS3().getBucketName())
+                .key(keyName)
+                .build();
+
+        GetObjectPresignRequest getObjectPresignRequest = GetObjectPresignRequest.builder()
+                .signatureDuration(awsProperty.getS3().getPresignedUrlExpirationDuration())
+                .getObjectRequest(getObjectRequest)
+                .build();
+
+        PresignedGetObjectRequest presignedGetObjectRequest = s3Presigner.presignGetObject(getObjectPresignRequest);
+
+        return presignedGetObjectRequest.url().toString();
     }
 }
