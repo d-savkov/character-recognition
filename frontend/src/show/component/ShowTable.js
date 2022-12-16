@@ -4,23 +4,33 @@ import {Link} from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 import Popup from "../../shared/popup/Popup";
 import './show-table.css';
+import CreateShowForm from "../form/CreateShowForm";
+import UpdateShowForm from "../form/UpdateShowForm";
 
 export default function ShowTable() {
     const showService = new ShowService();
     const [shows, setShows] = useState([]);
-    const [popupActive, setPopupActive] = useState(true);
+    const [popupActive, setPopupActive] = useState(false);
+    const [form, setForm] = useState(null);
     useEffect(() => {
         showService.getAll()
             .then((response) => response.data)
             .then((value) => setShows(value));
     }, []);
 
-    const onUpdate = (id) => {
-        console.log("update" + id);
+    const onCreate = () => {
+        setForm(<CreateShowForm/>)
+        setPopupActive(true);
+    }
+
+    const onUpdate = (show) => {
+        setForm(<UpdateShowForm show={show}/>)
+        setPopupActive(true);
     }
 
     const onDelete = (id) => {
         showService.deleteById(id);
+        window.location.reload();
     }
 
     return (
@@ -49,10 +59,10 @@ export default function ShowTable() {
                             <td>
                                 <div>
                                     <button type="button" className="btn btn-outline-primary btn-lg column-btn"
-                                            onClick={() => onUpdate(show.id)}>
+                                            onClick={() => onUpdate(show)}>
                                         <i className="bi bi-pencil-square"/>
                                     </button>
-                                    <button type="button" className="btn btn-outline-danger btn-lg"
+                                    <button type="button" className="btn btn-outline-danger btn-lg column-btn"
                                             onClick={() => onDelete(show.id)}>
                                         <i className="bi bi-trash3"/>
                                     </button>
@@ -62,9 +72,9 @@ export default function ShowTable() {
                     ))
                 }
                 <tr>
-                    <td colspan="4">
+                    <td colSpan="4">
                         <button type="button" className="btn btn-outline-success btn-lg row-btn"
-                                onClick={() => setPopupActive(true)}>
+                                onClick={onCreate}>
                             <i className="bi bi-plus-circle"/>
                         </button>
                     </td>
@@ -72,6 +82,7 @@ export default function ShowTable() {
                 </tbody>
             </Table>
             <Popup active={popupActive} setActive={setPopupActive}>
+                {form}
             </Popup>
         </div>
     );

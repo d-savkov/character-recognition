@@ -12,15 +12,11 @@ export default class ShowService {
     }
 
     create(request) {
-        return axios.post(`${SHOW_REST_API_URL}/create`,
-            request,
-        )
+        return axios.post(SHOW_REST_API_URL, request)
     }
 
     update(id, request) {
-        return axios.put(`${SHOW_REST_API_URL}/${id}`,
-            request
-        )
+        return axios.put(`${SHOW_REST_API_URL}/${id}`, request)
     }
 
     deleteById(id) {
