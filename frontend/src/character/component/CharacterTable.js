@@ -5,6 +5,8 @@ import CardComponent from "../../shared/temp/CardComponent";
 import './character-table.css'
 import {ButtonGroup} from "react-bootstrap";
 import Popup from "../../shared/popup/Popup";
+import CreateCharacterForm from "../form/CreateCharacterForm";
+import UpdateCharacterForm from "../form/UpdateCharacterForm";
 
 export default function CharacterTable(props) {
     const characterService = new CharacterService();
@@ -23,11 +25,13 @@ export default function CharacterTable(props) {
         window.location.reload();
     }
 
-    const onUpdate = (id) => {
+    const onUpdate = (character) => {
+        setForm(<UpdateCharacterForm showId={showId} character={character}/>)
         setPopupActive(true);
     }
 
     const onCreate = () => {
+        setForm(<CreateCharacterForm showId={showId}/>)
         setPopupActive(true);
     }
 
@@ -49,7 +53,7 @@ export default function CharacterTable(props) {
                             <ButtonGroup className="character-button-bar">
                                 <button type="button"
                                         className="btn btn-outline-primary btn-lg column-btn"
-                                        onClick={() => onUpdate(character.id)}>
+                                        onClick={() => onUpdate(character)}>
                                     <i className="bi bi-pencil-square"/>
                                 </button>
                                 <button type="button"
