@@ -1,5 +1,7 @@
 package com.example.bsuir.image.service.impl;
 
+import com.example.bsuir.image.dto.request.CreateImageRequest;
+import com.example.bsuir.image.dto.request.mapper.CreateImageMapper;
 import com.example.bsuir.image.model.Image;
 import com.example.bsuir.image.repository.ImageRepository;
 import com.example.bsuir.image.service.ImageService;
@@ -13,6 +15,7 @@ import java.util.List;
 public class ImageServiceImpl implements ImageService {
 
     private final ImageRepository repository;
+    private final CreateImageMapper createMapper;
 
     @Override
     public Image getById(Long id) {
@@ -27,5 +30,15 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public List<Image> getAllByCharacterId(Long characterId) {
         return repository.findAllByCharacterId(characterId);
+    }
+
+    @Override
+    public Image create(CreateImageRequest request) {
+        return repository.save(createMapper.toEntity(request));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
