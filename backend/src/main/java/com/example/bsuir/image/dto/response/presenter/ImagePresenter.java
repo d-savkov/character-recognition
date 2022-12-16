@@ -1,7 +1,7 @@
-package com.example.bsuir.image.dto.presenter;
+package com.example.bsuir.image.dto.response.presenter;
 
 import com.example.bsuir.aws.service.AwsS3PresignService;
-import com.example.bsuir.image.dto.ImageResponse;
+import com.example.bsuir.image.dto.response.ImageResponse;
 import com.example.bsuir.image.model.Image;
 import com.example.bsuir.shared.dto.response.presenter.Presenter;
 import lombok.RequiredArgsConstructor;

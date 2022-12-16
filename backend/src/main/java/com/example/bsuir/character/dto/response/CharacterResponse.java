@@ -1,7 +1,7 @@
 package com.example.bsuir.character.dto.response;
 
 import com.example.bsuir.character.model.Character;
-import com.example.bsuir.image.dto.ImageResponse;
+import com.example.bsuir.image.dto.response.ImageResponse;
 import com.example.bsuir.shared.dto.response.Response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.bsuir.image.dto;
+package com.example.bsuir.image.dto.response;
 
 import com.example.bsuir.image.model.Image;
 import com.example.bsuir.shared.dto.response.Response;
@@ -11,13 +11,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageResponse implements Response<Image> {
-
-    private Long id;
-
-    private String keyName;
+public class ImagePresignResponse implements Response<Image> {
 
     private String url;
 
-    private Long characterId;
+    private String keyName;
 }
