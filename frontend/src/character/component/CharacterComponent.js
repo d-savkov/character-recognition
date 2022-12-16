@@ -20,7 +20,7 @@ export default function CharacterComponent(props) {
                     .sort((a, b) => a.id > b.id ? 1 : -1)
                     .map(character => (
                         <Link style={{textDecoration: 'none'}} to={`character/${character.id}`}>
-                            <CardComponent person={character}/>
+                            <CardComponent character={character}/>
                         </Link>
                     ))
                 }

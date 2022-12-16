@@ -86,7 +86,7 @@ export default function RecognitionComponent() {
                                     <div key={c.character.id}>
                                         <Link style={{textDecoration: 'none'}}
                                               to={`/show/${c.character.showId}/character/${c.character.id}`}>
-                                            <CardComponent person={c.character}/>
+                                            <CardComponent character={c.character}/>
                                         </Link>
                                         <p>{c.similarity}%</p>
                                     </div>

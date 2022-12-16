@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import ImageComponent from '../../shared/temp/ImageComponent';
 import CharacterService from "../service/CharacterService";
 
 export default function CharacterSingleComponent() {
@@ -18,9 +17,12 @@ export default function CharacterSingleComponent() {
         <div>
             {character && (<>
                 <div className="wiki-single-image-container">
-                    <ImageComponent className="wiki-single-image-background" img={character.base64Image}
-                                    alt={character.name}/>
-                    <ImageComponent className="wiki-single-image" img={character.base64Image} alt={character.name}/>
+                    <img className="wiki-single-image-background"
+                         src={character.images[0].url}
+                         alt={character.name}/>
+                    <img className="wiki-single-image"
+                         src={character.images[0].url}
+                         alt={character.name}/>
                 </div>
                 <div className="wiki-single-text">
                     <h1 className="wiki-single-name">

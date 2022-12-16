@@ -1,20 +1,19 @@
 import React from 'react';
-import ImageComponent from './ImageComponent';
 
 export default function CardComponent(props) {
-    const person = props.person;
+    const character = props.character;
 
     return (
         <div className="card">
             <article>
-                <ImageComponent className="card-img"
-                                img={person.base64Image}
-                                alt={person.name}/>
+                <img className="card-img"
+                     src={character.images[0].url}
+                     alt={character.name}/>
                 <h3 className="card-name">
-                    {person.name}
+                    {character.name}
                 </h3>
                 <p className="card-played-by">
-                    {person.playedBy}
+                    {character.playedBy}
                 </p>
             </article>
         </div>
