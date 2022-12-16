@@ -1,5 +1,9 @@
 package com.example.bsuir.character.service.impl;
 
+import com.example.bsuir.character.dto.request.CreateCharacterRequest;
+import com.example.bsuir.character.dto.request.UpdateCharacterRequest;
+import com.example.bsuir.character.dto.request.mapper.CreateCharacterMapper;
+import com.example.bsuir.character.dto.request.mapper.UpdateCharacterMapper;
 import com.example.bsuir.character.model.Character;
 import com.example.bsuir.character.repository.CharacterRepository;
 import com.example.bsuir.character.service.CharacterService;
@@ -13,6 +17,8 @@ import java.util.List;
 public class CharacterServiceImpl implements CharacterService {
 
     private final CharacterRepository repository;
+    private final CreateCharacterMapper createMapper;
+    private final UpdateCharacterMapper updateMapper;
 
     @Override
     public List<Character> getAll() {
@@ -33,6 +39,16 @@ public class CharacterServiceImpl implements CharacterService {
     public Character getByImageId(Long imageId) {
         Character character = repository.findByImageIdOrThrow(imageId);
         return repository.findByIdOrThrow(character.getId());
+    }
+
+    @Override
+    public Character create(CreateCharacterRequest request) {
+        return repository.save(createMapper.toEntity(request));
+    }
+
+    @Override
+    public Character updateById(Long id, UpdateCharacterRequest request) {
+        return repository.save(updateMapper.toEntity(id, request));
     }
 
     @Override
