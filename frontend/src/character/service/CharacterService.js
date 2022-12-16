@@ -12,7 +12,22 @@ export default class CharacterService {
     }
 
     getById(showId, id) {
+        const url = `${this.getShowRestApiUrl(showId)}/${id}`;
+        return axios.get(url);
+    }
+
+    create(showId, request) {
         const url = this.getShowRestApiUrl(showId);
-        return axios.get(`${url}/${id}`);
+        return axios.post(url, request);
+    }
+
+    updateById(showId, id, request) {
+        const url = `${this.getShowRestApiUrl(showId)}/${id}`;
+        return axios.put(url, request);
+    }
+
+    deleteById(showId, id) {
+        const url = `${this.getShowRestApiUrl(showId)}/${id}`;
+        return axios.delete(url);
     }
 }

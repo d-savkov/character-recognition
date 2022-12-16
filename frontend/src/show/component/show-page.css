@@ -1,0 +1,21 @@
+.show-page-text {
+    padding: 0 4%;
+    text-align: center;
+}
+
+.show-page-name {
+    font: 45px "Georgia";
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.show-page-type {
+    font: 18px "Georgia";
+    margin: 10px 0;
+}
+
+.show-page-description {
+    text-align: justify;
+    font: 20px "Georgia";
+    margin: 10px 0;
+}
