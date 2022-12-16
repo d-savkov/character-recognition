@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ShowService from "../service/ShowService";
 import {Typography} from "@mui/material";
-import CharacterComponent from "../../character/component/CharacterComponent";
+import CharacterTable from "../../character/component/CharacterTable";
 
 export default function ShowPage() {
     const showService = new ShowService();
@@ -27,7 +27,7 @@ export default function ShowPage() {
                     <Typography variant="p" component="div">
                         {show.description}
                     </Typography>
-                    <CharacterComponent showId={id}/>
+                    <CharacterTable showId={id}/>
                 </>
             )}
         </div>

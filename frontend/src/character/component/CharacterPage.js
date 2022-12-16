@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import CharacterService from "../service/CharacterService";
 
-export default function CharacterSingleComponent() {
+export default function CharacterPage() {
     const characterService = new CharacterService();
     const {id} = useParams();
     const {showId} = useParams();

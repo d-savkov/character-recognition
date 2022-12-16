@@ -1,0 +1,23 @@
+.character-container {
+    background-color: white;
+    padding: 2% 4%;
+}
+
+.character-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(230px, 1fr));
+    grid-gap: 20px;
+}
+
+.character-button-bar {
+    display: flex;
+    width: 100%;
+}
+
+.character-button-bar button {
+    margin: 5px;
+}
+
+.character-button-bar button label {
+    padding: 0 5px 0 0;
+}
