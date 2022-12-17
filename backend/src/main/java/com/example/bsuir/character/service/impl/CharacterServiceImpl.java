@@ -7,6 +7,7 @@ import com.example.bsuir.character.dto.request.mapper.UpdateCharacterMapper;
 import com.example.bsuir.character.model.Character;
 import com.example.bsuir.character.repository.CharacterRepository;
 import com.example.bsuir.character.service.CharacterService;
+import com.example.bsuir.image.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,8 @@ public class CharacterServiceImpl implements CharacterService {
     private final CharacterRepository repository;
     private final CreateCharacterMapper createMapper;
     private final UpdateCharacterMapper updateMapper;
+
+    private final ImageService imageService;
 
     @Override
     public List<Character> getAll() {
@@ -53,6 +56,7 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public void deleteById(Long id) {
+        imageService.getAllByCharacterId(id).forEach(image -> imageService.deleteById(image.getId()));
         repository.deleteById(id);
     }
 }
