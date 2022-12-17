@@ -1,13 +1,13 @@
 import CharacterForm from "./CharacterForm";
 import {useState} from "react";
-import CharacterService from "../service/CharacterService";
+import {create} from "../service/CharacterFormSubmitService";
 
 export default function CreateCharacterForm(props) {
-    const characterService = new CharacterService();
+
     const [showId, setShowId] = useState(props.showId)
 
-    const onSubmit = (character) => {
-        characterService.create(showId, character);
+    const onSubmit = (response) => {
+        create(showId, response);
     }
 
     return (

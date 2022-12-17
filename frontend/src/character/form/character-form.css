@@ -1,0 +1,18 @@
+.character-form-image-container {
+    margin: 10px;
+    filter: drop-shadow(5px 5px 10px #272a27);
+}
+
+.character-form-image-container img {
+    width: auto;
+    height: 235px;
+    object-fit: cover;
+}
+
+.character-form-button-bar button {
+    margin: 5px;
+}
+
+.character-form-button-bar button label {
+    padding: 0 5px 0 0;
+}

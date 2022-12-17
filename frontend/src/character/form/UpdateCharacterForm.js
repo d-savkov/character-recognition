@@ -1,15 +1,14 @@
 import {useState} from "react";
-import CharacterService from "../service/CharacterService";
 import CharacterForm from "./CharacterForm";
+import {update} from "../service/CharacterFormSubmitService";
 
 export default function UpdateCharacterForm(props) {
-    const characterService = new CharacterService();
     const [showId, setShowId] = useState(props.showId);
     const [characterId, setCharacterId] = useState(props.character.id);
     const [character, setCharacter] = useState(props.character);
 
-    const onSubmit = (character) => {
-        characterService.updateById(showId, characterId, character);
+    const onSubmit = (response) => {
+        update(showId, characterId, response);
     }
 
     return (

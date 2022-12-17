@@ -1,28 +1,29 @@
 import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import FaceDescriptorProvider from "../../recognition/service/FaceDescriptorProvider";
+import './character-form.css'
 
 export default function CharacterForm(props) {
-    const descriptorProvider = new FaceDescriptorProvider();
-
     const [image, setImage] = useState(props.image);
     const [name, setName] = useState(props.name);
     const [playedBy, setPlayedBy] = useState(props.playedBy);
     const [description, setDescription] = useState(props.description);
     const [showId, setShowId] = useState(props.showId);
+    const [validated, setValidated] = useState(false);
 
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleSubmit = (e) => {
-        const [descriptor, setDescriptor] = useState([]);
-        descriptorProvider.getFaceDescriptor(formData())
-            .then((response) => response.data)
-            .then((value) => setDescriptor(value))
-
-        const character = {name, playedBy, description, showId};
-        const result = {character, descriptor};
-        props.onSubmit(result);
+        e.preventDefault();
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.stopPropagation();
+        } else {
+            setValidated(true);
+            const character = {name, playedBy, description, showId};
+            const result = {character: character, image: selectedFile};
+            props.onSubmit(result);
+        }
     }
 
     const onFileChange = (event) => {
@@ -33,48 +34,40 @@ export default function CharacterForm(props) {
                 setImage(e.target.result)
             };
             reader.readAsDataURL(event.target.files[0]);
+        } else {
+            setImage(null);
         }
-    };
-
-    const onRemove = () => {
-        setSelectedFile(null);
-        setImage(null);
-    };
-
-    const formData = () => {
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-        return formData;
     };
 
     return (
         <div>
-            <Form onSubmit={handleSubmit}>
-                <div>
-                    {image
-                        ? <div>
-                            <div className="recognition-image-container">
-                                <img src={image} alt={image.name}/>
-                            </div>
+            <div>
+                {image
+                    ?
+                    <div>
+                        <div className="character-form-image-container">
+                            <img src={image} alt={image.name}/>
                         </div>
+                    </div>
+                    :
+                    <div/>
+                }
+            </div>
 
-                        : <div className="image-input">
-                            <div className="form-group">
-                                <label className="label">
-                                    <i className="bi bi-paperclip"/>
-                                    <span className="title">Загрузить фото</span>
-                                    <input type="file" accept="image/jpg, image/jpeg" onChange={onFileChange}/>
-                                </label>
-                            </div>
-                        </div>
-                    }
-                </div>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Control
+                        type="file"
+                        accept="image/jpg, image/jpeg"
+                        onChange={onFileChange}/>
+                </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Control
                         type="text"
                         value={name}
                         placeholder="Enter character name"
+                        required
                         onChange={(event) => setName(event.target.value)}
                     />
                 </Form.Group>
@@ -84,6 +77,7 @@ export default function CharacterForm(props) {
                         type="text"
                         value={playedBy}
                         placeholder="Enter actor name"
+                        required
                         onChange={(event) => setPlayedBy(event.target.value)}
                     />
                 </Form.Group>
@@ -94,6 +88,7 @@ export default function CharacterForm(props) {
                         rows={5}
                         value={description}
                         placeholder="Enter character description"
+                        required
                         onChange={(event) => setDescription(event.target.value)}
                     />
                 </Form.Group>
