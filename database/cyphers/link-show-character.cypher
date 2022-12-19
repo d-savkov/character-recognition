@@ -246,3 +246,48 @@ MERGE (c)-[r:CHARACTER_OF]->(s);
 
 MATCH (s:Show {name: 'Game of Thrones'}), (c:Character {name: 'Archmaester Ebrose'})
 MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Frank Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Fiona Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Lip Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Ian Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Debbie Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Carl Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Veronica'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Kevin Ball'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Mickey Milkovich'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Steve'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Sheila Jackson'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Mandy Milkovich'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Svetlana'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Sean'})
+MERGE (c)-[r:CHARACTER_OF]->(s);
+
+MATCH (s:Show {name: 'Shameless'}), (c:Character {name: 'Liam Gallagher'})
+MERGE (c)-[r:CHARACTER_OF]->(s);

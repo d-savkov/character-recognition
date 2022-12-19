@@ -495,3 +495,93 @@ MERGE (c:Character {
   description:  'A Citadel archmaester,  Ebrose is highly knowledgeable in medicine and the human body. He oversees several of Samwell Tarly’s duties,  and is stern but affectionate to the new trainee.',
   playedBy:     'Jim Broadbent'
 });
+
+MERGE (c:Character {
+  name:         'Frank Gallagher',
+  description:  "Frank Gallagher is the proud single dad of a large brood of smart, spirited, independent kids who without him would be... perhaps better off. A hopeless addict and troublemaker, when Frank isn't at the bar spending what little money he has, he's usually passed out on the floor. Frank is constantly scheming on how to beat the system and support his addictions, and he thinks nothing of throwing his kids, or anyone else, under a bus to do so.",
+  playedBy:     'William H. Macy'
+});
+
+MERGE (c:Character {
+  name:         'Fiona Gallagher',
+  description:  "Fiona is in the difficult position of being the oldest of the Gallagher children, so most of the responsibility and child-rearing falls on her young shoulders. This young woman takes it all in stride -- she's clearly been doing it for a long time. Fiona is headstrong and sure of herself in most situations, but she has a wild streak and is often her own worst enemy.",
+  playedBy:     'Emmy Rossum'
+});
+
+MERGE (c:Character {
+  name:         'Lip Gallagher',
+  description:  "Short for Phillip, Lip is the second Gallagher child and by far the smartest. He is a straight A student and seems destined for big things. That is, if being a Gallagher with a penchant for breaking hearts and getting in trouble doesn't derail him first.",
+  playedBy:     'Jeremy Allen White'
+});
+
+MERGE (c:Character {
+  name:         'Ian Gallagher',
+  description:  "As if being a middle Gallagher child wasn't enough, Ian is the most like his mother, which is not necessarily a good thing. He is also gay and definitely enjoys the benefits of being a cute young ginger.",
+  playedBy:     'Cameron Monaghan'
+});
+
+MERGE (c:Character {
+  name:         'Debbie Gallagher',
+  description:  "One of the middle Gallagher children, Debbie is helpful, sensitive, and has a good heart. She longs for familial stability and will go to great lengths to achieve it, often with disastrous results.",
+  playedBy:     'Emma Kenney'
+});
+
+MERGE (c:Character {
+  name:         'Carl Gallagher',
+  description:  "Carl is the second youngest Gallagher child, and is basically nothing but trouble. He's headed down a dangerous path with a destructive streak a mile wide. But Carl remains a Gallagher, with a particular loyalty to his father.",
+  playedBy:     'Ethan Cutkosky'
+});
+
+MERGE (c:Character {
+  name:         'Veronica',
+  description:  "The Gallaghers' neighbor, the sassy, sexy Veronica has always been willing to lend a hand or an ear, or whatever the Gallaghers need. Her rock solid relationship with her man Kev is a shining example to all the Gallaghers.",
+  playedBy:     'Shanola Hampton'
+});
+
+MERGE (c:Character {
+  name:         'Kevin Ball',
+  description:  "Kev is the owner of the neighborhood bar with his wife, Veronica, and the Gallaghers' next door neighbor. He's a good guy who's willing to give Frank drinks on credit and help anyone in need. Kev isn't the sharpest knife in the drawer, but he makes up for it with his big... heart.",
+  playedBy:     'Steve Howey'
+});
+
+MERGE (c:Character {
+  name:         'Mickey Milkovich',
+  description:  "Repeatedly in and out of incarceration with no idea how to make a living at anything that's legal, Mickey Milkovich seems destined for a hard life. His attraction to Ian is both an awkward burden and a saving grace for this otherwise damaged young man.",
+  playedBy:     'Noel Fisher'
+});
+
+MERGE (c:Character {
+  name:         'Steve',
+  description:  "Jimmy/Steve is a handsome, well-bred guy with a lot of moxie, a lot of money, and a rap sheet a mile long. He has moved in with the Gallaghers and he and Fiona are trying to make a go of it. But his wife, the Brazilian drug dealer's daughter, continues to throw a wrench in his plans.",
+  playedBy:     'Justin Chatwin'
+});
+
+MERGE (c:Character {
+  name:         'Sheila Jackson',
+  description:  "Sheila is the neighborhood kook who suffers from agoraphobia, sexual kinkiness, and the demands of a neurotically clean house. But her orderly home and natural mothering instincts are attractive to many of the Gallaghers, despite her peculiarities.",
+  playedBy:     'Joan Cusack'
+});
+
+MERGE (c:Character {
+  name:         'Mandy Milkovich',
+  description:  "Mandy Milkovich, Mickey's sister, is from the only family in the neighborhood worse off than the Gallaghers. She's Ian's friend, but her true love is Lip. Too bad Lip doesn't really see her as serious girlfriend material.",
+  playedBy:     'Emma Greenwell'
+});
+
+MERGE (c:Character {
+  name:         'Svetlana',
+  description:  "Mickey's hand whore wife Svetlana is a ballsy, take-no-prisoners Russian immigrant. She does whatever she needs to survive, and she's smart enough to take care of herself and win the respect and admiration of others along the way.",
+  playedBy:     'Isidora Goreshter'
+});
+
+MERGE (c:Character {
+  name:         'Sean',
+  description:  "Fiona's boss at the diner where she works has a soft spot for troublemakers and addicts -- probably because he is one himself. The attraction between Fiona and him is palpable, but her taste for danger might be too much for him.",
+  playedBy:     'Dermot Mulroney'
+});
+
+MERGE (c:Character {
+  name:         'Liam Gallagher',
+  description:  "The youngest Gallagher child might not look like his family, but he's very much a Gallagher. He has been brought up almost entirely by Fiona and the rest of his siblings.",
+  playedBy:     'Christian Isaiah'
+});

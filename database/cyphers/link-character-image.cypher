@@ -337,3 +337,64 @@ MERGE (i)-[r:IMAGE_OF]->(c);
 MATCH (c:Character {name: 'Archmaester Ebrose'}),
       (i:Image {keyName: 'game-of-thrones/archmaester-ebrose/1.jpeg'})
 MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Frank Gallagher'}),
+      (i:Image {keyName: 'shameless/Frank-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Fiona Gallagher'}),
+      (i:Image {keyName: 'shameless/Fiona-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Lip Gallagher'}),
+      (i:Image {keyName: 'shameless/Lip-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Ian Gallagher'}),
+      (i:Image {keyName: 'shameless/Ian-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Debbie Gallagher'}),
+      (i:Image {keyName: 'shameless/Debbie-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Carl Gallagher'}),
+      (i:Image {keyName: 'shameless/Carl-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Veronica'}),
+      (i:Image {keyName: 'shameless/Veronica/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Kevin Ball'}),
+      (i:Image {keyName: 'shameless/Kevin-Ball/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Mickey Milkovich'}),
+      (i:Image {keyName: 'shameless/Mickey-Milkovich/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Steve'}),
+      (i:Image {keyName: 'shameless/Steve/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Sheila Jackson'}),
+      (i:Image {keyName: 'shameless/Sheila-Jackson/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Mandy Milkovich'}),
+      (i:Image {keyName: 'shameless/Mandy-Milkovich/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Svetlana'}),
+      (i:Image {keyName: 'shameless/Svetlana/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Sean'}),
+      (i:Image {keyName: 'shameless/Sean/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
+MATCH (c:Character {name: 'Liam Gallagher'}),
+      (i:Image {keyName: 'shameless/Liam-Gallagher/1.jpg'})
+MERGE (i)-[r:IMAGE_OF]->(c);
+
